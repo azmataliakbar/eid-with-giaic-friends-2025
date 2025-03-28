@@ -1,0 +1,129 @@
+/* ===== Base and Star Styles (Your Original CSS slightly adjusted for layering) ===== */
+
+body {
+  margin: 0;
+  overflow: hidden; /* Prevent scrollbars */
+  background-color: #0a192f; /* Dark background like a night sky */
+  font-family: 'Poppins', sans-serif; /* Optional: Consistent font */
+}
+
+.stars-container {
+  /* Changed from relative to absolute for layering */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1; /* Place stars behind the text container (which will have a higher z-index) */
+  overflow: hidden; /* Keep stars contained */
+}
+
+.star {
+  position: absolute;
+  top: -10px; /* Start above the screen */
+  width: 2px;
+  height: 2px;
+  background-color: white;
+  border-radius: 50%; /* Make them round */
+  box-shadow: 0 0 6px 1px white; /* Add a subtle glow */
+
+  /* Animation properties */
+  animation-name: fall;
+  animation-timing-function: linear; /* Constant speed */
+  animation-iteration-count: infinite; /* Loop forever */
+}
+
+/* Define the falling animation */
+@keyframes fall {
+  0% {
+      transform: translateY(0);
+      opacity: 1;
+  }
+  100% {
+      /* End position (fall down the full height + a bit more) */
+      transform: translateY(calc(100vh + 20px));
+      opacity: 1;
+  }
+}
+
+/* --- Star Variations (Keep these exactly as you had them) --- */
+.star:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: -1s; }
+.star:nth-child(2) { left: 30%; animation-duration: 6s; animation-delay: -3s; width: 1px; height: 1px; }
+.star:nth-child(3) { left: 50%; animation-duration: 9s; animation-delay: -2s; }
+.star:nth-child(4) { left: 70%; animation-duration: 5s; animation-delay: -5s; width: 3px; height: 3px; }
+.star:nth-child(5) { left: 90%; animation-duration: 7s; animation-delay: -0.5s; }
+.star:nth-child(6) { left: 20%; animation-duration: 10s; animation-delay: -4s; }
+.star:nth-child(7) { left: 40%; animation-duration: 5.5s; animation-delay: -6s; width: 1px; height: 1px; }
+.star:nth-child(8) { left: 60%; animation-duration: 8.5s; animation-delay: -1.5s; }
+.star:nth-child(9) { left: 80%; animation-duration: 6.5s; animation-delay: -3.5s; width: 3px; height: 3px; }
+.star:nth-child(10){ left: 5%;  animation-duration: 11s; animation-delay: -7s; }
+.star:nth-child(11){ left: 25%; animation-duration: 7.5s; animation-delay: -2.5s; }
+.star:nth-child(12){ left: 45%; animation-duration: 9.5s; animation-delay: -4.5s; width: 1px; height: 1px; }
+.star:nth-child(13){ left: 65%; animation-duration: 5.2s; animation-delay: -0.2s; }
+.star:nth-child(14){ left: 85%; animation-duration: 8.2s; animation-delay: -5.8s; width: 3px; height: 3px; }
+.star:nth-child(15){ left: 15%; animation-duration: 6.8s; animation-delay: -6.5s; }
+.star:nth-child(16){ left: 35%; animation-duration: 10.5s; animation-delay: -1.2s; width: 1px; height: 1px; }
+.star:nth-child(17){ left: 55%; animation-duration: 4.8s; animation-delay: -3.8s; }
+.star:nth-child(18){ left: 75%; animation-duration: 7.8s; animation-delay: -5.1s; width: 3px; height: 3px; }
+.star:nth-child(19){ left: 95%; animation-duration: 9.2s; animation-delay: -2.1s; }
+.star:nth-child(20){ left: 1%;  animation-duration: 5.9s; animation-delay: -4.9s; }
+
+
+/* ===== NEW CSS FOR TEXT CONTENT ===== */
+
+.content-container {
+  position: absolute; /* Allows precise positioning */
+  top: 50%;           /* Move top edge to vertical center */
+  left: 50%;          /* Move left edge to horizontal center */
+  transform: translate(-50%, -50%); /* Shift element back by half its own width/height */
+  z-index: 10;        /* Ensure text is above the stars (higher z-index than .stars-container) */
+  text-align: center; /* Center align the text within the container */
+  width: 90%;         /* Prevent text from touching screen edges on small screens */
+  pointer-events: none; /* Optional: Allows clicks to go "through" the text area if needed */
+}
+
+.eid-text {
+  font-family: 'Lobster', cursive; /* Optional: Fancy font */
+  font-size: clamp(3rem, 10vw, 7rem); /* Responsive font size */
+  font-weight: bold;
+  margin: 0 0 15px 0; /* Remove default margin, add some bottom margin */
+  padding: 0;
+  text-transform: uppercase;
+
+  /* Rainbow Gradient Effect */
+  background: linear-gradient(to right,
+      #ff0000, /* Red */
+      #ff7f00, /* Orange */
+      #ffff00, /* Yellow */
+      #00ff00, /* Green */
+      #0000ff, /* Blue */
+      #4b0082, /* Indigo */
+      #8a2be2  /* Violet */
+  );
+  -webkit-background-clip: text; /* Apply gradient ONLY to the text shape (Chrome/Safari) */
+  background-clip: text;         /* Apply gradient ONLY to the text shape (Standard) */
+  color: transparent;            /* Make the actual text color transparent to show gradient */
+
+  /* Subtle shadow to help readability */
+  text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.3);
+}
+
+.wishes-text-1 {
+  font-size: clamp(1rem, 2.5vw, 1.8rem); /* Responsive font size */
+  color: white;            /* White color like the stars */
+  margin: 0;
+  padding: 0;
+  text-align: left;      /* Align this line to the right */
+  padding-right: 10%;     /* Push it slightly from the absolute right edge */
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Subtle shadow for contrast */
+}
+
+.wishes-text-2 {
+  font-size: clamp(1rem, 2.5vw, 1.8rem); /* Responsive font size */
+  color: white;            /* White color like the stars */
+  margin: 0;
+  padding: 0;
+  text-align: right;      /* Align this line to the right */
+  padding-right: 10%;     /* Push it slightly from the absolute right edge */
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Subtle shadow for contrast */
+}
